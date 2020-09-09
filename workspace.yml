@@ -1,0 +1,18 @@
+command('apply-config'): |
+  #!php
+  $ws->confd('workspace:/confd')->apply();
+  
+confd('workspace:/confd'):
+  - { src: 'settings.php', dst: 'workspace:/settings.php' }
+  
+attributes:
+  database:
+    driver: mysql
+    host: mysql
+    name: drupal
+    username: user
+    password: secret 
+  
+command('say-hello'): |
+  #!bash
+  passthru echo 'Hello World'
